@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
-  Widget botaoEscolha(String imagem) {
+  Widget botaoEscolha(String imagem, double tamanho) {
     return Container(
-      width: 70,
-      height: 70,
+      width: tamanho,
+      height: tamanho,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(color: Colors.grey, width: 2),
@@ -32,6 +32,12 @@ class MyHomePage extends StatelessWidget {
         child: Image.asset(
           imagem,
           fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: Colors.grey[300],
+              child: const Icon(Icons.broken_image, color: Colors.grey),
+            );
+          },
         ),
       ),
     );
@@ -45,65 +51,64 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.red,
         centerTitle: true,
       ),
-
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-
-          const Text(
-            'Escolha do APP',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-
-          const SizedBox(height: 20),
-
-          Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.grey, width: 2),
-            ),
-            child: ClipOval(
-              child: Image.asset(
-                'imagens/padrao.png',
-                fit: BoxFit.cover,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 140,
+              height: 140,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.grey, width: 2),
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/imagens/padrao.png',
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Colors.red[100],
+                      child: const Center(
+                        child: Text(
+                          'padrao.png',
+                          style: TextStyle(fontSize: 10),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-          ),
 
-          const SizedBox(height: 60),
+            const SizedBox(height: 10),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              botaoEscolha('assets/imagens/pedra.png'),
-              botaoEscolha('assets/imagens/papel.png'),
-              botaoEscolha('assets/imagens/tesoura.png'),
-            ],
-          ),
-
-          const SizedBox(height: 40),
-
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+            const Text(
+              'Escolha do APP',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const TelaDois()),
-              );
-            },
+            const SizedBox(height: 60),
 
-            child: const Text(
-              "Jogar",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+            const Text(
+              'Sua Escolha',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-          ),
-        ],
+
+            const SizedBox(height: 20),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                botaoEscolha('assets/imagens/pedra.png', 97),
+                botaoEscolha('assets/imagens/papel.png', 97),
+                botaoEscolha('assets/imagens/tesoura.png', 100),
+              ],
+            ),
+
+          ],
+        ),
       ),
     );
   }
