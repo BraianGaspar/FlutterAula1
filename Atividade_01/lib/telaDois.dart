@@ -45,7 +45,7 @@ class TelaDois extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            imagemCircular('assets/imagens/papel.png', 140),
+            imagemCircular('imagens/papel.png', 140),
 
             const SizedBox(height: 15),
 
@@ -56,7 +56,7 @@ class TelaDois extends StatelessWidget {
 
             const SizedBox(height: 40),
 
-            imagemCircular('assets/imagens/pedra.png', 140),
+            imagemCircular('imagens/pedra.png', 140),
 
             const SizedBox(height: 15),
 
@@ -76,7 +76,7 @@ class TelaDois extends StatelessWidget {
               ),
               child: ClipOval(
                 child: Image.asset(
-                  'assets/imagens/perder.png',
+                  'imagens/perder.png',
                   fit: BoxFit.cover,
                   width: 170,
                   height: 170,
