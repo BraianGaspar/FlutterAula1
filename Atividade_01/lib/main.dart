@@ -64,7 +64,7 @@ class MyHomePage extends StatelessWidget {
               ),
               child: ClipOval(
                 child: Image.asset(
-                  'assets/imagens/padrao.png',
+                  'imagens/padrao.png',
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
@@ -101,9 +101,9 @@ class MyHomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                botaoEscolha('assets/imagens/pedra.png', 97),
-                botaoEscolha('assets/imagens/papel.png', 97),
-                botaoEscolha('assets/imagens/tesoura.png', 100),
+                botaoEscolha('imagens/pedra.png', 97),
+                botaoEscolha('imagens/papel.png', 97),
+                botaoEscolha('imagens/tesoura.png', 100),
               ],
             ),
 
